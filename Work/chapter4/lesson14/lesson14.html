@@ -12,12 +12,18 @@
 		li{text-align: left;}
 		[type = "button"], [type = "submit"]{margin: 16px;}
 		#basket{width: 300px; margin: auto;}
-		.empty_basket{border:dotted 6px darkcyan; 
+		.empty_basket{border:dotted 6px darkcyan;
 			background: black; padding: 8px;}
-		.filled_basket{border:dotted 6px green; 
+		.filled_basket{border:dotted 6px green;
 			background: yellow; padding: 8px;}
 	</style>
 	<script type="text/javascript">
+		window.onload = fillBasket;
+		function fillBasket(){
+			var elem = document.getElementById('basket');
+			elem.className = 'filled_basket';
+			elem.innerHTML = '<p>商品が入る</p>';
+		}
 	</script>
 </head>
 <body>
