@@ -17,6 +17,23 @@
 			}
 		,false)
 
+		window.onload = function() {
+			var elem = document.getElementById('lnk_prev');
+			elem.addEventListener( 'click',
+				function(event){
+					if( curphoto > 0 )
+						showLargePhoto(curphoto-1);
+				}
+			,false);
+
+			var elem = document.getElementById('lnk_next');
+			elem.addEventListener( 'click',
+				function(event){
+					if( curphoto < (photo_list.length-1) )
+						showLargePhoto(curphoto+1);
+				}
+			,false);
+		}
 		//サムネイル作成
 		function createThumbs(event) {
 			var holder = document.getElementById('thumbsholder');
@@ -35,13 +52,16 @@
 			var large = document.getElementById('img_large');
 			large.src = photo_list[0];
 		}
-
 		function showPhoto(event) {
-			var img = event.currentTarget;
-			var large = document.getElementById('img_large');
-			large.src = img.src;
-			curphoto = parseInt(img.photoid);
+			showLargePhoto(event.currentTarget.photoid);
 		}
+
+		function showLargePhoto(photoid){
+			var large = document.getElementById('img_large');
+			large.src = photo_list[photoid];
+			curphoto = parseInt(photoid);
+		}
+
 	</script>
 </head>
 <body>
